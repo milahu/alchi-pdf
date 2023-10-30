@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# TODO add only git-tracked files
+
 set -e
 
 # empty
@@ -18,7 +20,9 @@ add "<h1>alchi-pdf</h1>"
 add "<section id='files'>"
 add "<h2>files</h2>"
 add "<ul>"
-ls **/*.pdf | grep -v -e '\.booklet\.pdf$' -e '\.twopage\.pdf$' |
+find . -name '*.pdf' -printf "%P\n" |
+grep -v -e '\.booklet\.pdf$' -e '\.twopage\.pdf$' |
+sort -r |
 while read basefile
 do
   base=${basefile%.*}
@@ -52,4 +56,4 @@ add "</section>"
 add "</body>"
 add "</html>"
 
-cat index.html
+echo done index.html
