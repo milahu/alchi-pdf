@@ -16,6 +16,7 @@ cd "$(dirname "$0")"
 pdf="wersindmeinefreunde.2025-11-19.booklet.pdf"
 pdf=wersindmeinefreunde.2026-01-26.booklet.pdf
 pdf=wersindmeinefreunde.2026-01-28.booklet.pdf
+pdf=wersindmeinefreunde.2026-02-22.booklet.pdf
 if [ -n "$1" ]; then
   pdf="$1"
 fi
