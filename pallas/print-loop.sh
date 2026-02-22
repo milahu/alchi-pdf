@@ -343,6 +343,10 @@ for round in $(seq $rounds); do
     # lp "$pdf" "${options[@]}" -d "$printer_name"
     # lp -d "$printer_name" "${options[@]}" -o raw "$cache_raster_path"
     printer_ipp_url="${avahi_printers[$printer_name]}"
+    if [ -z "$printer_ipp_url" ]; then
+      # printer was not found
+      continue
+    fi
     echo ">" ipptool -tv "$printer_ipp_url" ipp_print_job.txt
     ipptool -tv "$printer_ipp_url" <(echo "$ipp_print_job") >/dev/null &
   done
