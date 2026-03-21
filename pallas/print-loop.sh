@@ -94,8 +94,9 @@ options=(
   -o PageSize=A4
   -o PrintQuality=600dpi
   -o scaling=100
-  -o fit-to-page
   -o page-border=none
+  # -o position=0,0
+  # -o fitplot=false
 )
 
 t1=0
