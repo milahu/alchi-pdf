@@ -350,7 +350,9 @@ for round in $(seq $rounds); do
       continue
     fi
     echo ">" ipptool -tv "$printer_ipp_url" ipp_print_job.txt
-    ipptool -tv "$printer_ipp_url" <(echo "$ipp_print_job") >/dev/null &
+    # setsid: keep ipptool running after this script is killed
+    setsid \
+    ipptool -tv "$printer_ipp_url" <(echo "$ipp_print_job") >/dev/null 2>&1 </dev/null &
   done
 
   continue
